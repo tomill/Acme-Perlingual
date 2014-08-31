@@ -1,0 +1,6 @@
+name = "Acme-P2P"
+# badges = ["travis"]
+authority="cpan:TOMITA"
+
+module_maker="ModuleBuildTiny"
+
