@@ -4,10 +4,10 @@ help:
 	cat Makefile
 
 run:
-	PERL5OPT="-Mlib=extlib/lib/perl5 -Mlib=lib" extlib/bin/plackup --port 5656 -a app.psgi
+	PERL5OPT="-Mlib=extlib/lib/perl5 -Mlib=lib" extlib/bin/plackup --port 5656 -a example/app.psgi
 
 rrun:
-	PERL5OPT="-Mlib=extlib/lib/perl5 -Mlib=lib" extlib/bin/plackup --port 5656 -a app.psgi -R lib,app.psgi
+	PERL5OPT="-Mlib=extlib/lib/perl5 -Mlib=lib" extlib/bin/plackup --port 5656 -a example/app.psgi -R lib
 
 setup:
 	mkdir -p extlib
