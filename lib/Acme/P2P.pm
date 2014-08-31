@@ -3,9 +3,9 @@ use 5.008001;
 use strict;
 use warnings;
 our $VERSION = "0.01";
-
 use Moo;
 
+use Encode;
 use Acme::P2P::Perl;
 use Acme::P2P::PHP;
 
@@ -14,17 +14,14 @@ sub perl2php {
     
     my $output = Acme::P2P::Perl->to_php($input);
     
-    my @errors;
-    if (my $e = Acme::P2P::Perl->syntax_check($input)) {
-        push @errors, $e;
-    }
-    if (my $e = Acme::P2P::PHP->syntax_check($output)) {
-        push @errors, $e;
-    }
+    my @errors = (
+        Acme::P2P::Perl->check($input),
+        Acme::P2P::PHP->check($output),
+    );
 
     return {
         output => $output,
-        error  => @errors ? join("\n", @errors) : undef,
+        errors => @errors ? \@errors : undef,
     };
 }
 
