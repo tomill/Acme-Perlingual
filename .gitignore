@@ -3,7 +3,7 @@
 /Build
 /Build.bat
 /blib
-/Makefile
+###/Makefile
 
 /carton.lock
 /.carton/
@@ -28,3 +28,5 @@ cover_db/
 MYMETA.*
 
 /Acme-P2P-*
+
+extlib
