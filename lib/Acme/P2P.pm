@@ -6,13 +6,14 @@ our $VERSION = "0.01";
 use Moo;
 
 use Encode;
+use Acme::P2P::Doc;
 use Acme::P2P::Perl;
 use Acme::P2P::PHP;
 
 sub perl2php {
     my ($self, $input) = @_;
     
-    my $output = Acme::P2P::Perl->to_php($input);
+    my $output = Acme::P2P::Doc->new(\$input)->to_php();
     
     my @errors = (
         Acme::P2P::Perl->check($input),

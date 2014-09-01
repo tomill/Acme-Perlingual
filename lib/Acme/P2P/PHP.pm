@@ -3,25 +3,17 @@ use strict;
 use warnings;
 use Encode;
 use File::Temp;
+use IO::File;
 
-sub syntax_check {
+sub check {
     my ($self, $source) = @_;
     
     my $temp = File::Temp->new();
+    $temp->print("<?php\n") if $source !~ /^<\?/m;
+    $temp->print(encode_utf8 $source);
     
-    print {$temp} "<?php\n";
-    print {$temp} encode_utf8($source);
-    
-    my $filename = $temp->filename;
-    my $out = qx(php -l $filename 2>&1);
+    my $out = qx(cat $temp | php -l 2>&1 1>/dev/null);
     return if $? == 0;
-    
-    $out =~ s!$filename!<source>!gms;
-    $out =~ s/Errors parsing <source>\n//;
-    $out =~ s/^\s*\n//gm;
-    chomp $out;
-
-    return unless $out;
     return $out;
 }
 
