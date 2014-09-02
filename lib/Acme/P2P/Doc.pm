@@ -68,7 +68,7 @@ sub __walk {
         $callback->($elem, $elem->{__php_start} // $elem->start);
     }
 
-    if ($elem->isa('PPI::Node')) {
+    if ($elem->isa('PPI::Node') and not $elem->{__php_skip}) {
         for my $child_node ($elem->children) {
             __walk($child_node, $callback);
         }

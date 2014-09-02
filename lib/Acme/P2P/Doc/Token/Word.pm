@@ -10,7 +10,8 @@ sub to_php {
     my $next  = $elem->next_sibling;
     my $prevs = $elem->sprevious_sibling;
     my $nexts = $elem->snext_sibling;
-    
+    my $parent = $elem->parent;
+
     return 'null' if $token eq 'undef';
     return '!' if $token eq 'not';
     return 'elseif' if $token eq 'elsif';
@@ -37,12 +38,18 @@ sub to_php {
         return 'function';
     }
 
+    # sigh....
     if ($token eq 'ref') {
         return 'is_array';          
     }
     if ($token =~ /^(?:sleep|sprintf|isset|unset)$/) { # sigh...
         return $token;
     }
+    
+    if ($parent->class eq 'PPI::Statement::Expression') {
+        return qq{'$token'};
+    }
+
     
     return $token;
 }
