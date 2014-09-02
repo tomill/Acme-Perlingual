@@ -84,6 +84,7 @@ sub __walk {
 
 sub __token_to_php {
     my ($elem, $token) = @_;
+    return unless $token;
     
     my $module = $elem->class;
        $module =~ s/^PPI::/Acme::P2P::Doc::/;
