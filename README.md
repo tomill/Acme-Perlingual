@@ -1,6 +1,6 @@
 # NAME
 
-Acme::P2P - Convert perl code to php or something.
+Acme::P2P - Converts perl code to php or something.
 
 # SYNOPSIS
 
@@ -30,9 +30,7 @@ A. ya it is also one of "P"rogramming language.
 
 # SEE ALSO
 
-
-
-
+[http://p2p.koneta.org/](http://p2p.koneta.org/) test page.
 
 # LICENSE
 
