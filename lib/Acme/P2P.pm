@@ -1,10 +1,9 @@
 package Acme::P2P;
-use 5.008001;
+use 5.010001;
 use strict;
 use warnings;
 our $VERSION = "0.01";
 use Moo;
-
 use Encode;
 use Acme::P2P::Doc;
 use Acme::P2P::Perl;
@@ -33,7 +32,7 @@ __END__
 
 =head1 NAME
 
-Acme::P2P - Convert perl code to php or something.
+Acme::P2P - Converts perl code to php or something.
 
 =head1 SYNOPSIS
 
@@ -42,8 +41,8 @@ Acme::P2P - Convert perl code to php or something.
 
 =head1 DESCRIPTION
 
-Acme::P2P was born from :sushi: meeting L<http://www.zusaar.com/event/9467003>
-in VOYAGEGROUP.
+Acme::P2P was born from :sushi: 現状確認会 (tech meeting)
+L<http://www.zusaar.com/event/9467003> at VOYAGEGROUP.
 
 Thanks L<PPI>, you are a great module.
 
@@ -60,6 +59,10 @@ A. yes it can. it also starts "P".
 Q. support javascript?
 
 A. ya it is also one of "P"rogramming language.
+
+=head1 SEE ALSO
+
+
 
 =head1 LICENSE
 

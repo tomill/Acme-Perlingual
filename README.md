@@ -9,8 +9,8 @@ Acme::P2P - Convert perl code to php or something.
 
 # DESCRIPTION
 
-Acme::P2P was born from :sushi: meeting [http://www.zusaar.com/event/9467003](http://www.zusaar.com/event/9467003)
-in VOYAGEGROUP.
+Acme::P2P was born from :sushi: 現状確認会 (tech meeting)
+[http://www.zusaar.com/event/9467003](http://www.zusaar.com/event/9467003) at VOYAGEGROUP.
 
 Thanks [PPI](http://search.cpan.org/perldoc?PPI), you are a great module.
 
@@ -27,6 +27,12 @@ A. yes it can. it also starts "P".
 Q. support javascript?
 
 A. ya it is also one of "P"rogramming language.
+
+# SEE ALSO
+
+
+
+
 
 # LICENSE
 
