@@ -41,7 +41,7 @@ sub finalize {
     my ($self) = @_;
     
     # added 1st <?php line instead of shebang
-    unshift(@{ $self->lines }, "<?php\n");
+    unshift(@{ $self->lines }, "<?php // by perlingual\n");
 }
 
 1;
