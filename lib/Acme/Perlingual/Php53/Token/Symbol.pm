@@ -7,7 +7,7 @@ sub convert {
     
     return $token if $token =~ /^\$/;
     
-    $token =~ s/^[%@&\*]/\$/; # WARN: no ref!
+    $token =~ s/^[%@&\*]/\$/; # WARN: no ref support :/
     $token;
 }
 

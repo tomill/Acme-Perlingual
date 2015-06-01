@@ -1,4 +1,4 @@
-package Acme::Perlingual::Php53::Token::Attribute;
+package Acme::Perlingual::Universal::Token::Attribute;
 use strict;
 use warnings;
 
@@ -12,7 +12,7 @@ sub convert {
         $prev->{__perlingual_skip} = 1;
     }
     
-    return " // attribute: $token\n"; 
+    return $self->comment_prefix . " attribute: $token\n"; 
 }
 
 1;

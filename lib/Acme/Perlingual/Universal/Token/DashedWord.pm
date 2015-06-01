@@ -1,4 +1,4 @@
-package Acme::Perlingual::Php53::Token::DashedWord;
+package Acme::Perlingual::Universal::Token::DashedWord;
 use strict;
 use warnings;
 

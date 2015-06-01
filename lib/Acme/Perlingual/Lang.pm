@@ -18,6 +18,8 @@ has doc => (is => 'rw');
 has options => (is => 'rw', default => sub { +{} });
 has lines => (is => 'rw', default => sub { +[] });
 
+requires 'comment_prefix';
+
 sub BUILD {
     my ($self) = @_;
     $self->convert;
@@ -98,20 +100,22 @@ sub get_converter {
     my ($self, $elem) = @_;
     my $class = $elem->class;
        $class =~ s/^PPI:://;
-       $class = $self->namespace . '::' . $class;
+
+    my @search;
+    push @search, "Acme::Perlingual::Universal::$class";
+    push @search, $self->namespace . "::$class";
     
-    try {
-        require_module($class);
-    } catch {
-        # one challenge more (try to get parent namespace)
-        try {
-            $class =~ s/::[^:]+$//;
-            require_module($class);
-        };
-    };
+    $class =~ s/::[^:]+$//; # PPI::Token::Regexp::* to PPI::Token::Regexp
+    push @search, "Acme::Perlingual::Universal::$class";
+    push @search, $self->namespace . "::$class";
     
-    if (try { $class->can('convert') }) {
-        return $class;
+    for my $module (@search) {
+        if (try {
+            require_module($module);
+            $module->can('convert');
+        }) {
+            return $module;
+        }
     }
 }
 

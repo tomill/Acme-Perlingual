@@ -1,4 +1,4 @@
-package Acme::Perlingual::Php53::Token::Cast;
+package Acme::Perlingual::Universal::Token::Cast;
 use strict;
 use warnings;
 

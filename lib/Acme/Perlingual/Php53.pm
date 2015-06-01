@@ -8,6 +8,8 @@ use Moo;
 
 with 'Acme::Perlingual::Lang';
 
+sub comment_prefix { '// ' }
+
 sub check {
     my ($self) = @_;
     my $temp = File::Temp->new();

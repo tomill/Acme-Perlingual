@@ -1,11 +1,11 @@
-package Acme::Perlingual::Php53::Token::Comment;
+package Acme::Perlingual::Universal::Token::End;
 use strict;
 use warnings;
 
 sub convert {
     my ($self, $elem, $token) = @_;
     
-    $token =~ s!^[#]+!//!;
+    $token =~ s!^!$self->{comment_prefix} !gm;
     $token;
 }
 

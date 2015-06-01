@@ -1,4 +1,4 @@
-package Acme::Perlingual::Php53::Token::Label;
+package Acme::Perlingual::Universal::Token::Label;
 use strict;
 use warnings;
 

@@ -1,4 +1,4 @@
-package Acme::Perlingual::Php53::Token::Magic;
+package Acme::Perlingual::Universal::Token::Magic;
 use strict;
 use warnings;
 

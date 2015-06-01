@@ -1,4 +1,4 @@
-package Acme::Perlingual::Php53::Token::Quote;
+package Acme::Perlingual::Universal::Token::Quote;
 use strict;
 use warnings;
 
