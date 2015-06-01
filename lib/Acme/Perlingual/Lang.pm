@@ -102,12 +102,12 @@ sub get_converter {
        $class =~ s/^PPI:://;
 
     my @search;
-    push @search, "Acme::Perlingual::Universal::$class";
     push @search, $self->namespace . "::$class";
+    push @search, "Acme::Perlingual::Universal::$class";
     
     $class =~ s/::[^:]+$//; # PPI::Token::Regexp::* to PPI::Token::Regexp
-    push @search, "Acme::Perlingual::Universal::$class";
     push @search, $self->namespace . "::$class";
+    push @search, "Acme::Perlingual::Universal::$class";
     
     for my $module (@search) {
         if (try {
