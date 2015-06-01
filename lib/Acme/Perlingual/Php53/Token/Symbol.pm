@@ -1,8 +1,8 @@
-package Acme::P2P::Doc::Token::Symbol;
+package Acme::Perlingual::Php53::Token::Symbol;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
     return $token if $token =~ /^\$/;

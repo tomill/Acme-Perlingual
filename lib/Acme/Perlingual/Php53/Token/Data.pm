@@ -1,8 +1,8 @@
-package Acme::P2P::Doc::Token::Data;
+package Acme::Perlingual::Php53::Token::Data;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
     $token =~ s!^!// !gm;

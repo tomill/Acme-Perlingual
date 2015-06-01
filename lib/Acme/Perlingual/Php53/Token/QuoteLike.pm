@@ -1,8 +1,8 @@
-package Acme::P2P::Doc::Token::QuoteLike;
+package Acme::Perlingual::Php53::Token::QuoteLike;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
 
     # TODO fix lazy regex, should use quotemeta

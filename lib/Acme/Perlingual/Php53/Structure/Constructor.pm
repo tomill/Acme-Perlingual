@@ -1,8 +1,8 @@
-package Acme::P2P::Doc::Structure::Constructor;
+package Acme::Perlingual::Php53::Structure::Constructor;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
     return 'array(' if $token eq '['; # sad that php is 5.3

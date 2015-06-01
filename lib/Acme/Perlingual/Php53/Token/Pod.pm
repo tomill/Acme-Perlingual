@@ -1,8 +1,8 @@
-package Acme::P2P::Doc::Token::Pod;
+package Acme::Perlingual::Php53::Token::Pod;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
     $token =~ s!^=head\d !!ms;

@@ -1,15 +1,15 @@
-package Acme::P2P::Doc::Structure::Subscript;
+package Acme::Perlingual::Php53::Structure::Subscript;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
     my $prev = $elem->previous_sibling;
     if ($prev and
         $prev->class eq 'PPI::Token::Operator' and
         $prev->content eq '->') {
-        $prev->{__php_skip} = 1;
+        $prev->{__perlingual_skip} = 1;
     }
     
     return '[' if $token eq '{';

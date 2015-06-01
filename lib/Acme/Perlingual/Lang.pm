@@ -1,8 +1,10 @@
 package Acme::Perlingual::Lang;
 use strict;
 use warnings;
-use Moo::Role;
+use Module::Runtime qw/require_module/;
 use PPI::Document;
+use Try::Tiny;
+use Moo::Role;
 
 =head1 NAME
 
@@ -26,7 +28,7 @@ sub finalize { }
 
 sub as_string {
     my ($self) = @_;
-    join "\n", @{ $self->lines };
+    join "", @{ $self->lines };
 }
 
 sub convert {
@@ -40,11 +42,11 @@ sub convert {
     $self->walk($doc, sub {
         my ($self, $elem, $token) = @_;
         if ($elem->isa('PPI::Structure')) {
-            $elem->{__perlingual_start}  = $self->token($elem, $elem->start);
-            $elem->{__perlingual_finish} = $self->token($elem, $elem->finish);
+            $elem->{__perlingual_start}  = $self->convert_token($elem, $elem->start);
+            $elem->{__perlingual_finish} = $self->convert_token($elem, $elem->finish);
         }
         elsif ($elem->isa('PPI::Token')) {
-            $elem->{__perlingual_content} = $self->token($elem, $elem->content);
+            $elem->{__perlingual_content} = $self->convert_token($elem, $elem->content);
         }
     });
     
@@ -79,10 +81,21 @@ sub walk {
     }
 }
 
-sub token {
+sub convert_token {
     my ($self, $elem, $token) = @_;
     return unless $token;
     
+    my $class = $self->get_converter($elem);
+    
+    if ($class) {
+        return $class->convert($elem, $token);
+    } else {
+        return $token; # give up (or same as perl)
+    }
+}
+
+sub get_converter {
+    my ($self, $elem) = @_;
     my $class = $elem->class;
        $class =~ s/^PPI:://;
        $class = $self->namespace . '::' . $class;
@@ -90,19 +103,16 @@ sub token {
     try {
         require_module($class);
     } catch {
-        # one more challenge
+        # one challenge more (try to get parent namespace)
         try {
             $class =~ s/::[^:]+$//;
             require_module($class);
         };
     };
-
-    if (try { $class->can('to_php') }) {
-        return $class->to_php($elem, $token);
-    }
     
-    return $token; # give up or same as php
-
+    if (try { $class->can('convert') }) {
+        return $class;
+    }
 }
 
 1;

@@ -2,7 +2,7 @@ use strict;
 use Test::More 0.98;
 
 use_ok $_ for qw(
-    Acme::P2P
+    Acme::Perlingual
 );
 
 done_testing;

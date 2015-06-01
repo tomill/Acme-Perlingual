@@ -1,8 +1,8 @@
-package Acme::P2P::Doc::Token::ArrayIndex;
+package Acme::Perlingual::Php53::Token::ArrayIndex;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
     $token =~ s/^\$#(.*)/count(\$$1)/;

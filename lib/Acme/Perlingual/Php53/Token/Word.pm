@@ -1,8 +1,8 @@
-package Acme::P2P::Doc::Token::Word;
+package Acme::Perlingual::Php53::Token::Word;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
     # TODO a lot
@@ -20,9 +20,9 @@ sub to_php {
     
     if ($token =~ /^(?:my|our)$/) {
         if ($next and $next->class eq 'PPI::Token::Whitespace') {
-            $next->{__php_skip} = 1;
+            $next->{__perlingual_skip} = 1;
         }
-        $elem->{__php_skip} = 1;
+        $elem->{__perlingual_skip} = 1;
         return;
     }
     

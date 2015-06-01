@@ -1,8 +1,8 @@
-package Acme::P2P::Doc::Token::Magic;
+package Acme::Perlingual::Php53::Token::Magic;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
     return   q{$_PERL_MAGIC_VAR["$'"]} if $token eq q{$'};

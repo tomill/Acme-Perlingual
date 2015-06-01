@@ -39,7 +39,7 @@ sub finalize {
     my ($self) = @_;
     
     # added 1st <?php line instead of shebang
-    unshift(@{ $self->lines }, '<?php');
+    unshift(@{ $self->lines }, "<?php\n");
 }
 
 1;

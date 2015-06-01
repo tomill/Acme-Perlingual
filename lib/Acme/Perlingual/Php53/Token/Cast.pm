@@ -1,11 +1,11 @@
-package Acme::P2P::Doc::Token::Cast;
+package Acme::Perlingual::Php53::Token::Cast;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
-    $elem->{__php_skip} = 1;
+    $elem->{__perlingual_skip} = 1;
     return; # give up
 }
 

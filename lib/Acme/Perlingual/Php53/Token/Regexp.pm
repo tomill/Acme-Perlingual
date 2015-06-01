@@ -1,25 +1,25 @@
-package Acme::P2P::Doc::Token::Regexp;
+package Acme::Perlingual::Php53::Token::Regexp;
 use strict;
 use warnings;
 
-sub to_php {
+sub convert {
     my ($self, $elem, $token) = @_;
     
     my @r;
     my $curr = $elem;
     while (my $prev = $curr->previous_sibling) {
         if ($prev->class eq 'PPI::Token::Whitespace') {
-            $prev->{__php_skip} = 1;
+            $prev->{__perlingual_skip} = 1;
         }
         elsif ($prev->class eq 'PPI::Token::Operator' and
             $prev->content eq '=~') {
-            $prev->{__php_skip} = 1;
+            $prev->{__perlingual_skip} = 1;
         }
         else {
             push @r, $prev->clone;
         }
         
-        $prev->{__php_skip} = 1;
+        $prev->{__perlingual_skip} = 1;
         $curr = $prev;
     }
     
@@ -28,11 +28,11 @@ sub to_php {
     }
     
     if ($elem->class eq 'PPI::Token::Regexp::Match') {
-        return sprintf("preg_match('%s', ",
+        return sprintf("preg_match('/%s/', ",
             $elem->get_match_string);
     } 
     if ($elem->class =~ /^PPI::Token::Regexp::(Substitute|Transliterate)/) {
-        return sprintf("preg_replace('%s', '%s', ",
+        return sprintf("preg_replace('/%s/', '%s', ",
             $elem->get_match_string,
             $elem->get_substitute_string);
     } 
