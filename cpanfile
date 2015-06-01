@@ -6,6 +6,7 @@ requires 'File::Temp';
 requires 'IO::File';
 requires 'JSON' => '>= 2.90';
 requires 'JSON::XS';
+requires 'Module::Metadata';
 requires 'Module::Runtime';
 requires 'Moo';
 requires 'parent';
@@ -13,6 +14,7 @@ requires 'Plack';
 requires 'Plack::Builder';
 requires 'PPI';
 requires 'Ref::List';
+requires 'Role::Tiny';
 requires 'Try::Tiny';
 
 on 'test' => sub {
