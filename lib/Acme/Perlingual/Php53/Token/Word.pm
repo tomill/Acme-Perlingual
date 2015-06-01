@@ -18,6 +18,8 @@ sub convert {
     return 'continue' if $token eq 'next';
     return 'break' if $token eq 'last';
     
+    return 'echo' if $token eq 'print';
+    
     if ($token =~ /^(?:my|our)$/) {
         if ($next and $next->class eq 'PPI::Token::Whitespace') {
             $next->{__perlingual_skip} = 1;

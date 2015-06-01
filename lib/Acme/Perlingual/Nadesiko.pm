@@ -19,7 +19,7 @@ sub finalize {
     my ($self) = @_;
     
     # added 1st <?php line instead of shebang
-    unshift(@{ $self->lines }, "// なでしこ by perlingual\n");
+    unshift(@{ $self->lines }, "// なでしこ\n");
 }
 
 1;

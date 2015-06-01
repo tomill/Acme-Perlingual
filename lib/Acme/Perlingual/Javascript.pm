@@ -19,7 +19,7 @@ sub finalize {
     my ($self) = @_;
     
     # added 1st <?php line instead of shebang
-    unshift(@{ $self->lines }, "// JavaScript by perlingual\n");
+    unshift(@{ $self->lines }, "// JavaScript\n");
 }
 
 1;

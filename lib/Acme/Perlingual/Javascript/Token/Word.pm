@@ -37,7 +37,18 @@ sub convert {
         }
         return 'function';
     }
+    
+    if ($token =~ /^(?:print|warn)$/) {
+        if ($nexts->class eq 'PPI::Structure::List' and $nexts->start eq '(') { 
+            # fine.
+        } else {
+            $elem->insert_after(PPI::Token::Structure->new('('));
+            $elem->parent->{children}[-1]->insert_before(PPI::Token::Structure->new(' )'));
+        }
 
+        return 'document.write' if $token eq 'print';
+        return 'alert' if $token eq 'warn'; # :P
+    }
     
     if ($parent->class eq 'PPI::Statement::Expression') {
         return qq{'$token'};
