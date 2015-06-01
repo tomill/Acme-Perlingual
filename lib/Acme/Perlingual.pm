@@ -36,13 +36,19 @@ Acme::Perlingual - Converts perl code to php or something.
 =head1 SYNOPSIS
 
     use Acme::Perlingual;
-    my $lang = Acme::Perlingual->new(source => "some perl code")->convert('php');
+    
+    my $lang = Acme::Perlingual->new(source => '$some->perl("code");')->convert('php');
     print $lang->as_string;
 
 =head1 DESCRIPTION
 
-Acme::P2P was born from :sushi: 現状確認会 (tech meeting)
+This module was born from :sushi: 現状確認会 (tech meeting) 
 L<http://www.zusaar.com/event/9467003> at VOYAGEGROUP.
+
+...and reborn on Shibuya.pm #17 
+L<http://shibuya.pm.org/blosxom/techtalks/201506.html>
+
+You can see demo at L<http://perlingual.koneta.org/>.
 
 Thanks L<PPI>, you are a great module.
 
