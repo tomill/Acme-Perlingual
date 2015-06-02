@@ -50,6 +50,9 @@ sub convert {
         return 'alert' if $token eq 'warn'; # :P
     }
     
+    if ($prevs and $prevs->class eq 'PPI::Token::Operator' and $prevs->content eq '->') {
+        return $token;
+    }
     if ($parent->class eq 'PPI::Statement::Expression') {
         return qq{'$token'};
     }

@@ -48,6 +48,9 @@ sub convert {
         return $token;
     }
     
+    if ($prevs and $prevs->class eq 'PPI::Token::Operator' and $prevs->content eq '->') {
+        return $token;
+    }
     if ($parent->class eq 'PPI::Statement::Expression') {
         return qq{'$token'};
     }
