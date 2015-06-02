@@ -12,14 +12,14 @@ sub prepare {
     my ($self) = @_;
     
     # remove shebang
-    $self->{source} =~ s/^#!.*\r?\n//;
+    $self->{source} =~ s/^#!.*\r?\n// and $self->{shebang} = 1;
 }
 
 sub finalize {
     my ($self) = @_;
     
     # added 1st <?php line instead of shebang
-    unshift(@{ $self->lines }, "// JavaScript\n");
+    unshift(@{ $self->lines }, "// JavaScript\n") if $self->{shebang};
 }
 
 1;

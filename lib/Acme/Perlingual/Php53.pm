@@ -26,7 +26,7 @@ sub prepare {
     my ($self) = @_;
     
     # remove shebang
-    $self->{source} =~ s/^#!.*\r?\n//;
+    $self->{source} =~ s/^#!.*\r?\n// and $self->{shebang} = 1;
     
     # cheating ...!
     $self->{source} =~ s!(\$self\s*=\s*)shift!$1\$this!g;
@@ -41,7 +41,7 @@ sub finalize {
     my ($self) = @_;
     
     # added 1st <?php line instead of shebang
-    unshift(@{ $self->lines }, "<?php\n");
+    unshift(@{ $self->lines }, "<?php\n") if $self->{shebang};
 }
 
 1;

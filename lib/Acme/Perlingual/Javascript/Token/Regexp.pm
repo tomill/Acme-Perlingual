@@ -15,8 +15,10 @@ sub convert {
             $prev->{__perlingual_content} = '.';
         }
         else {
-            $prev->insert_before($prev->clone);
-            $prev->insert_before(PPI::Token::Structure->new(' = '));
+            if ($elem->class =~ /^PPI::Token::Regexp::(Substitute|Transliterate)/) {
+                $prev->insert_before($prev->clone);
+                $prev->insert_before(PPI::Token::Structure->new(' = '));
+            }
             last;
         }
         

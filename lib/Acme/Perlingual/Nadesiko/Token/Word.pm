@@ -14,6 +14,7 @@ sub convert {
     
     return 'もし、' if $token eq 'if';
     return '違えば' if $token eq 'else';
+    return '空' if $token eq 'undef';
 
     if ($token =~ /^(?:my|our)$/) {
         if ($next and $next->class eq 'PPI::Token::Whitespace') {
